@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-jms-deployment
+  labels:
+    app: app-jms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-jms
+  template:
+    metadata:
+      labels:
+        app: app-jms
+    spec:
+      containers:
+      - name: app-jms
+        image: docker-batchkub-jms:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 61616
+        

@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: app-setup-job
+spec:
+  template:
+    metadata:
+      name: app-setup-job
+    spec:
+      containers:
+      - name: app-setup-job
+        image: docker-batchkub-setup-app:latest
+        imagePullPolicy: Never
+        env:
+        - name: DB_HOST
+          value: "app-db-service"
+        - name: JMS_HOST
+          value: "app-jms-service"
+      restartPolicy: OnFailure

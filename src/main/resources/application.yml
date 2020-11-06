@@ -1,0 +1,21 @@
+
+spring: 
+  datasource:
+    url: jdbc:mysql://localhost:32306/sample?useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+  jms:
+    template.receive-timeout: 60    
+  activemq:
+    broker-url: tcp://localhost:32616
+    user: admin
+    password: admin
+
+app:
+  gridSize: 3
+  
+  
+  

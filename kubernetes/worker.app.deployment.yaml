@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: app-job
+spec:
+  parallelism: 2
+  template:
+    metadata:
+      name: app-job
+    spec:
+      containers:
+      - name: app-job
+        image: docker-batchkub-worker-app:latest
+        imagePullPolicy: Never
+        env:
+        - name: DB_HOST
+          value: "app-db-service"
+        - name: JMS_HOST
+          value: "app-jms-service"
+      restartPolicy: OnFailure
